@@ -1,0 +1,8 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<p th:text="'hello ' + ${name}">hello! empty</p>
+<!-- hello! empty는 서버 없이 html 개발자들이 markup 하기 위해
+ 써두고 값을 보기 위한 것이고 서버를 거치게 되면 th:text의 값으로
+  치환되게 된다. -->
+</body>
+</html>
