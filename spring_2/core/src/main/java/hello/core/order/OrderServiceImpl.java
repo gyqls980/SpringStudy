@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 // Lombok에서 final이 붙은 것을 파라미터로 받는 생성자를 자동으로 만들어준다.
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
     //private final MemberRepository memberRepository = new MemoryMemberRepository();
     //private final DiscountPolicy discountPolicy = new RateDiscountPolicy();
@@ -26,11 +26,12 @@ public class OrderServiceImpl implements OrderService {
     private final DiscountPolicy discountPolicy;
 
     // 생성자가 하나면 @Autowired 생략 가능
+    @Autowired // .getBean(~.class)와 동일한 기능 -> 타입 기준 조회
     // 철저하게 DIP를 지키고 있다. 어떤 구현체가 들어올지 전혀 모르고 인터페이스에만 의존하고 있음.
-//    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
-//        this.memberRepository = memberRepository;
-//        this.discountPolicy = discountPolicy;
-//    }
+    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
 
     //테스트 용도
     public MemberRepository getMemberRepository() {
