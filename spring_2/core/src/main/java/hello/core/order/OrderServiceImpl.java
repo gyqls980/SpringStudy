@@ -1,5 +1,6 @@
 package hello.core.order;
 
+import hello.core.annotation.MainDiscountPolicy;
 import hello.core.discount.DiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
@@ -28,7 +29,7 @@ public class OrderServiceImpl implements OrderService {
     // 생성자가 하나면 @Autowired 생략 가능
     @Autowired // .getBean(~.class)와 동일한 기능 -> 타입 기준 조회
     // 철저하게 DIP를 지키고 있다. 어떤 구현체가 들어올지 전혀 모르고 인터페이스에만 의존하고 있음.
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+    public OrderServiceImpl(MemberRepository memberRepository, @MainDiscountPolicy  DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
