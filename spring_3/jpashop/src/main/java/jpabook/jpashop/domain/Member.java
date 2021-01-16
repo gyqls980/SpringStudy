@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Getter @Setter //@Table왜 안해줌?
+@Getter @Setter
 public class Member {
 
     @Id @GeneratedValue
@@ -23,6 +23,5 @@ public class Member {
     // orders와의 양방향 참조에서 읽기 전용 -> orders가 주인(FK가 있는 쪽)
     @OneToMany(mappedBy = "member")
     private List<Order> orders = new ArrayList<>();
-
 
 }
