@@ -1,0 +1,19 @@
+spring:
+  # 스프링부트가 기본적으로 메모리 db를 사용하므로 이 코드들이 모두 없어도 정상동작한다.
+#  datasource:
+#    url: jdbc:h2:mem:test
+#    username: sa
+#    password:
+#    driver-class-name: org.h2.Driver
+#
+#  jpa:
+#    hibernate:
+#      ddl-auto: create-drop #생성 후 내리는 것까지 수행
+#    properties:
+#      hibernate:
+#      # show_sql: true -> System.out으로 찍음
+#        format_sql: true
+
+logging.level:
+  org.hibernate.SQL: debug
+  #org.hibernate.type: trace
