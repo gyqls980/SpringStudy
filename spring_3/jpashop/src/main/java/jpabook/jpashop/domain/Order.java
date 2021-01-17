@@ -1,6 +1,8 @@
 package jpabook.jpashop.domain;
 
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -11,10 +13,12 @@ import java.util.List;
 @Entity
 @Getter @Setter
 @Table(name = "orders") // 테이블명을 class 객체명과 다르게 하기 위함
+@NoArgsConstructor(access = AccessLevel.PROTECTED) // new 써서 설정 방지
 public class Order {
     @Id @GeneratedValue
     @Column(name = "order_id")
     private Long id;
+
 
     // member와의 양방향 참조에서 연관관계 주인(FK가 있는 쪽)
     @ManyToOne(fetch = FetchType.LAZY)
