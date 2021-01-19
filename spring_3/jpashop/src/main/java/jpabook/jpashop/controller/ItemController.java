@@ -64,17 +64,23 @@ public class ItemController {
     }
 
     @PostMapping(value = "/items/{itemId}/edit")
-    public String updateItem(@ModelAttribute("form") BookForm form) {
+    public String updateItem(@PathVariable("itemId") Long itemId, @ModelAttribute("form") BookForm form) {
 
+        /*
         // book entity
         Book book = new Book();
         book.setId(form.getId());
         book.setName(form.getName());
         book.setPrice(form.getPrice());
+        // 수정 시 merge를 사용하면, 굳이 변경하지 않으려 한 값을 설정하지 않으면
+        // null로 취급되어서 DB에 업데이트 되서 문제가 생긴다.
+        // 그래서 변경 감지 기능을 사용하는게 맞다.
         book.setStockQuantity(form.getStockQuantity());
         book.setAuthor(form.getAuthor());
         book.setIsbn(form.getIsbn());
-        itemService.saveItem(book);
+        itemService.saveItem(book);*/
+
+        itemService.updateItem(itemId, form.getName(), form.getPrice(), form.getStockQuantity());
         return "redirect:/items";
     }
 }
